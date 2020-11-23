@@ -1,15 +1,17 @@
 class ScreenArguments {
     final String tipo;
     final String nome;
-    final String nota;
+    final double nota;
     final String tempoMedio;
-    final String preco;
+    final double preco;
+    final String cor;
 
   ScreenArguments(
     this.tipo,
     this.nome,
     this.nota,
     this.tempoMedio,
-    this.preco
+    this.preco,
+    this.cor
   );    
 }

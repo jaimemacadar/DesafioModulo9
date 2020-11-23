@@ -27,36 +27,43 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.blue,
+      statusBarBrightness: Brightness.dark,
+    ));
     return Scaffold(
-      appBar: AppBar(title: Text("Escolha uma Revenda"), actions: [
-        PopupMenuButton(
-            icon: Icon(Icons.import_export_sharp),
-            itemBuilder: (BuildContext context) {
-              return [
-                PopupMenuItem(
-                  child: Text('Melhor Avaliação'),
-                ),
-                PopupMenuItem(
-                  child: Text('Mais rápido'),
-                ),
-                PopupMenuItem(
-                  child: Text('Mais barato'),
-                ),
-              ];
-            }),
-        PopupMenuButton(
-            icon: Icon(Icons.help_outline),
-            itemBuilder: (BuildContext context) {
-              return [
-                PopupMenuItem(
-                  child: Text('Suporte'),
-                ),
-                PopupMenuItem(
-                  child: Text('Termos de serviço'),
-                ),
-              ];
-            })
-      ]),
+      appBar: AppBar(
+        title: Text("Escolha uma Revenda"),
+        actions: [
+          PopupMenuButton(
+              icon: Icon(Icons.import_export_sharp),
+              itemBuilder: (BuildContext context) {
+                return [
+                  PopupMenuItem(
+                    child: Text('Melhor Avaliação'),
+                  ),
+                  PopupMenuItem(
+                    child: Text('Mais rápido'),
+                  ),
+                  PopupMenuItem(
+                    child: Text('Mais barato'),
+                  ),
+                ];
+              }),
+          PopupMenuButton(
+              icon: Icon(Icons.help_outline),
+              itemBuilder: (BuildContext context) {
+                return [
+                  PopupMenuItem(
+                    child: Text('Suporte'),
+                  ),
+                  PopupMenuItem(
+                    child: Text('Termos de serviço'),
+                  ),
+                ];
+              })
+        ],
+      ),
       body: Container(
         child: Column(
           children: [
@@ -124,9 +131,17 @@ class _HomeState extends State<Home> {
                   return GestureDetector(
                     onTap: () {
                       setState(() {
-                        Navigator.of(context).pushNamed('/produto',
-                            arguments: ScreenArguments(
-                                'tipo', 'nome', 'nota', 'tempoMedio', 'preco'));
+                        Navigator.of(context).pushNamed(
+                          '/produto',
+                          arguments: ScreenArguments(
+                            dados[index]['tipo'],
+                            dados[index]['nome'],
+                            dados[index]['nota'],
+                            dados[index]['tempoMedio'],
+                            dados[index]['preco'],
+                            dados[index]['cor'],
+                          ),
+                        );
                       });
                     },
                     child: Container(
